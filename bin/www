@@ -1,0 +1,9 @@
+#!/usr/bin/env node
+require("../services/mysql/sequelize");
+const config = require("config");
+const app = require("../app");
+const port = config.get("server.port");
+
+app.listen(port, () => {
+  console.log(`server listening localhost:${port}`);
+});
