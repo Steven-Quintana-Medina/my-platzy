@@ -1,20 +1,18 @@
 module.exports = {
   server: {
-    port: 3000,
-    api_version: "",
-    stripe_key:"",
+    port: process.env.PORT,
+    api_version: process.env.API_VERSION,
+    stripe_key: process.env.STRIPE_KEY,
   },
-
   mysql: {
-    database: "",
-    username:  "",
-    password:  "",
-    host: "",
-    dialect: "",
+    database: process.env.DATABASE,
+    username:  process.env.USERNAME,
+    password:  process.env.PASSWORD,
+    host: process.env.HOST,
+    dialect: process.env.DIALECT,
   },
-
-  token:{
-  SEED:"secret",
-  expiration:"1h"
+  token: {
+    SEED: process.env.SEED,
+    expiration: process.env.EXPIRATION 
   }
 };
