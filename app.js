@@ -3,7 +3,7 @@ const cors = require("cors");
 const config = require("config");
 const routes = require("./routes");
 
-const { error404Handler, errorHandler } = require("./middleware");
+const { error404Handler, errorHandler } = require("./middleware/err");
 const app = express();
 
 app.use(cors());
