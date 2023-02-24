@@ -13,7 +13,7 @@ module.exports = {
   },
   async getCart(id_cart) {
     return await CartAdd.findAll({
-      where: { id:id_cart },
+      where: { id_cart },
       include: [
         {
           model: Course,
