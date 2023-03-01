@@ -18,7 +18,7 @@ module.exports = {
   async getCart(req, res) {
     let cart = await dao.getCart(req.token.id);
     cart = JSON.stringify(cart,null,2);
-    cart = JSON.parse(cart,null,2);
+    cart = JSON.parse(cart);
     return res.status(200).send(dto.multiple(cart));
   },
 
