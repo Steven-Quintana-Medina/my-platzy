@@ -2,9 +2,9 @@ const dao = require("./dao");
 const dto = require("./dto");
 
 module.exports = {
-  async addCourse(req, res) {
+  async addProduct(req, res) {
     const id = req.body.id;
-    const cart = await dao.addCourse({
+    const cart = await dao.addProduct({
       id_cart: req.token.id,
       id_product: id,
     });
@@ -12,24 +12,24 @@ module.exports = {
     else
       return res
         .status(202)
-        .send({ message: "the course is already saved in the cart    " });
+        .send({ message: "the product is already saved in the cart    " });
   },
 
   async getCart(req, res) {
     let cart = await dao.getCart(req.token.id);
-    cart = JSON.stringify(cart, null, 2);
-    cart = JSON.parse(cart);
+    cart = JSON.stringify(cart,null,2);
+    cart = JSON.parse(cart,null,2);
     return res.status(200).send(dto.multiple(cart));
   },
 
-  async removeCourses(req, res) {
-    await dao.removeCourses(req.token.id);
+  async removeProducts(req, res) {
+    await dao.removeProducts(req.token.id);
     return res.status(200).send({ message: "data delete successfully" });
   },
 
-  async removeCourse(req, res) {
+  async removeProduct(req, res) {
     const { id } = req.params;
-    await dao.removeCourse({
+    await dao.removeProduct({
       id_cart: req.token.id,
       id_product: id,
     });

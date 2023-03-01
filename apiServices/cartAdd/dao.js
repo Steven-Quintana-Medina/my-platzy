@@ -1,9 +1,9 @@
 const CartAdd = require("./model");
-const Course = require("../product/model");
+const Product = require("../product/model");
 const category = require("../category/model");
 
 module.exports = {
-  async addCourse(data) {
+  async addProduct(data) {
     const validation = await CartAdd.findOne({
       where: { id_product: data.id_product, id_cart: data.id_cart },
     });
@@ -16,18 +16,18 @@ module.exports = {
       where: { id_cart },
       include: [
         {
-          model: Course,
+          model: Product,
           require: false,
           include: [{ model: category, require: true }],
         },
       ],
     });
   },
-  async removeCourses(id_cart) {
+  async removeProducts(id_cart) {
     await CartAdd.destroy({ where: { id_cart }, truncate: true, cascade: false });
   },
 
-  async removeCourse(data) {
+  async removeProduct(data) {
     await CartAdd.destroy({
       where: { id_cart: data.id_cart, id_product: data.id_product },
     });
